@@ -1,0 +1,206 @@
+
+#define SKIT_VECTOR(iProbAction)    CT_PROBACTION, iProbAction
+#define OTHER_VECTOR(iExtra)        CT_ACTION, iExtra
+    // actual addresses will be loaded later
+
+// in display order
+static const CONDITION g_conditions[] =
+{
+	// META 1 = 0
+	{ SKIT_VECTOR(0), "Back Button", "+Sensors" },
+	// META 2 = 1 
+	{ SKIT_VECTOR(1), "Head Button" },
+
+	// META 4 = 20 21  (21 is empty)
+	{ SKIT_VECTOR(20), "Nose Detect" },
+		// META 5 = 22 
+	{ SKIT_VECTOR(22), "Nose Press" }, // former "mystery" sensor
+		// META 6 = 23 
+	{ SKIT_VECTOR(23), "Light sensor (petting)" },
+
+	{ OTHER_VECTOR(5), "Startup" },
+
+//////////////////////
+
+	//META 3 = 2 3 4 5 6 7 | 8 9 10 11 12 13 | 14 15 16 17 18 19 
+	{ SKIT_VECTOR(2), "Hyper Mood (sit)", "+Moods" },
+	{ SKIT_VECTOR(2+6), "Hyper Mood (stand)" },
+	{ SKIT_VECTOR(2+12), "Hyper Mood (lie)" },
+
+	{ SKIT_VECTOR(3), "Happy Mood (sit)" },
+	{ SKIT_VECTOR(3+6), "Happy Mood (stand)" },
+	{ SKIT_VECTOR(3+12), "Happy Mood (lie)" },
+
+	{ SKIT_VECTOR(4), "Sad Mood (sit)" },
+	{ SKIT_VECTOR(4+6), "Sad Mood (stand)" },
+	{ SKIT_VECTOR(4+12), "Sad Mood (lie)" },
+
+	{ SKIT_VECTOR(5), "Sick Mood (sit)" },
+	{ SKIT_VECTOR(5+6), "Sick Mood (stand)" },
+	{ SKIT_VECTOR(5+12), "Sick Mood (lie)" },
+
+	{ SKIT_VECTOR(6), "Sleepy Mood (sit)" },
+	{ SKIT_VECTOR(6+6), "Sleepy Mood (stand)" },
+	{ SKIT_VECTOR(6+12), "Sleepy Mood (lie)" },
+
+	{ SKIT_VECTOR(7), "Guard Mode" },
+
+	////////////////////////////////////////
+
+    // META 10 = 30 
+	// META 11 = 31 
+
+	{ SKIT_VECTOR(40), "1: usually Bow", "Remote" },
+	{ SKIT_VECTOR(41), "2: usually Sit Down" },
+	{ SKIT_VECTOR(42), "3: usually Good Boy" },
+	{ SKIT_VECTOR(43), "4: Trick Start" },
+	{ SKIT_VECTOR(44), "5: usually Bad Dog" },
+	{ SKIT_VECTOR(45), "6: usually ICybie" },
+	{ SKIT_VECTOR(46), "7: Stay start" },
+	{ SKIT_VECTOR(47), "8: Guard Start" },
+
+	{ OTHER_VECTOR(16), "10+1+Lg - show off" },
+	{ OTHER_VECTOR(17), "10+2+Lg - show off" },
+	{ OTHER_VECTOR(18), "10+3+Lg - show off" },
+
+
+	// META 12 = 32 ... META 43 = 63 
+            // Clap and/or Voice
+	{ SKIT_VECTOR(32), "1: usually 'Bow'", "Voice" },
+	{ SKIT_VECTOR(33), "2: usually 'Sit Down'" },
+	{ SKIT_VECTOR(34), "3: usually 'Good Boy'" },
+
+	{ SKIT_VECTOR(35), "4: Trick Start" },
+	{ SKIT_VECTOR(36), "5: usually 'Bad Dog'" },
+	{ SKIT_VECTOR(37), "6: usually 'ICybie'" },
+	{ SKIT_VECTOR(38), "7: Stay start" },
+	{ SKIT_VECTOR(39), "8: Guard start" },
+
+	{ SKIT_VECTOR(48), "Trick Error", "Trick Mode" },
+	{ SKIT_VECTOR(49), "Trick Scratch" },
+	{ SKIT_VECTOR(50), "Trick Dance" },
+	{ SKIT_VECTOR(51), "Trick Give Paw" },
+	{ SKIT_VECTOR(52), "Trick Beg" },
+	{ SKIT_VECTOR(53), "Trick Pee" },
+	{ SKIT_VECTOR(54), "Trick Wag Tail" },
+	{ SKIT_VECTOR(55), "Trick Head Stand" },
+	{ SKIT_VECTOR(56), "Trick Exit" },
+
+	{ SKIT_VECTOR(57), "Meet ChirpyChi", "Social" },
+	{ SKIT_VECTOR(58), "Meet ICybie" },
+	{ SKIT_VECTOR(59), "Meet SuperPoochi" },
+	{ SKIT_VECTOR(60), "Meet MeowChi" },
+	{ SKIT_VECTOR(61), "Meet Chis" },
+	{ SKIT_VECTOR(62), "Meet end1" },
+	{ SKIT_VECTOR(63), "Meet end2" },
+
+ 	// META 7 = 24 25 
+	// META 8 = 26 27 
+	// META 9 = 28 29 
+	{ SKIT_VECTOR(25), "Walking1", "Other (advanced)" },
+	{ SKIT_VECTOR(27), "Walking2" },
+	{ SKIT_VECTOR(29), "Walking3" },
+	{ OTHER_VECTOR(19), "start walking" },
+
+    // idle (stand only)
+	{ OTHER_VECTOR(75+0), "idle stand hyper" },
+	{ OTHER_VECTOR(75+1), "idle stand happy" },
+	{ OTHER_VECTOR(75+2), "idle stand sleepy" },
+	{ OTHER_VECTOR(75+3), "idle stand sad" },
+	{ OTHER_VECTOR(75+4), "idle stand sick" },
+	// +5 n/a
+	{ OTHER_VECTOR(75+6), "idle stand guard" },
+
+
+    // questionable
+
+    // tired or sick ?
+	{ OTHER_VECTOR(3), "tired 1" },
+	{ OTHER_VECTOR(4), "tired 2" },
+
+	{ OTHER_VECTOR(6), "misc6" },
+	{ OTHER_VECTOR(7), "misc7" },
+
+
+	{ OTHER_VECTOR(66), "other 66" },
+	{ OTHER_VECTOR(67), "other 67" },
+	{ OTHER_VECTOR(68), "other 68" },
+	{ OTHER_VECTOR(69), "other 69" },
+	{ OTHER_VECTOR(70), "other 70" },
+	{ OTHER_VECTOR(71), "other 71" },
+	{ OTHER_VECTOR(72), "other 72" },
+	{ OTHER_VECTOR(73), "other 73" },
+	{ OTHER_VECTOR(74), "other 74" },
+
+
+	{ OTHER_VECTOR(0), "head left" },
+	{ OTHER_VECTOR(1), "head center" },
+	{ OTHER_VECTOR(2), "head right" },
+	
+	{ OTHER_VECTOR(8), "recalibrate1" },
+	{ OTHER_VECTOR(9), "recalibrate2" },
+	
+    // charger
+	{ OTHER_VECTOR(10), "enter demo mode", "Charger (advanced)" },
+	{ OTHER_VECTOR(11), "lower threshold" },
+	{ OTHER_VECTOR(12), "raise threshold" },
+	{ OTHER_VECTOR(13), "threshold error" },
+	{ OTHER_VECTOR(14), "enable search" },
+	{ OTHER_VECTOR(15), "disable search" },
+
+	
+	{ OTHER_VECTOR(20), "misc20" },
+	{ OTHER_VECTOR(21), "misc21" },
+	{ OTHER_VECTOR(22), "misc22" },
+	{ OTHER_VECTOR(23), "misc23" },
+	{ OTHER_VECTOR(24), "misc24" },
+	{ OTHER_VECTOR(25), "misc25" },
+	{ OTHER_VECTOR(26), "wag_tail" },
+	{ OTHER_VECTOR(27), "misc27" },
+	
+	
+
+	{ OTHER_VECTOR(28), "search01" },
+	{ OTHER_VECTOR(29), "search02" },
+	{ OTHER_VECTOR(30), "search03" },
+	{ OTHER_VECTOR(31), "search04" },
+	{ OTHER_VECTOR(32), "search05" },
+	{ OTHER_VECTOR(33), "search06" },
+	{ OTHER_VECTOR(34), "search07" },
+	{ OTHER_VECTOR(35), "search08" },
+	{ OTHER_VECTOR(36), "search09" },
+	{ OTHER_VECTOR(37), "search10" },
+	{ OTHER_VECTOR(38), "search11" },
+	{ OTHER_VECTOR(39), "search12" },
+	{ OTHER_VECTOR(40), "search13" },
+	{ OTHER_VECTOR(41), "search14" },
+	{ OTHER_VECTOR(42), "search15" },
+	{ OTHER_VECTOR(43), "search16" },
+	{ OTHER_VECTOR(44), "search17" },
+	{ OTHER_VECTOR(45), "search18" },
+	{ OTHER_VECTOR(46), "search19" },
+	{ OTHER_VECTOR(47), "search20" },
+	{ OTHER_VECTOR(48), "search21" },
+	{ OTHER_VECTOR(49), "search22" },
+	{ OTHER_VECTOR(50), "search23" },
+	{ OTHER_VECTOR(51), "search24" },
+	{ OTHER_VECTOR(52), "search25" },
+	{ OTHER_VECTOR(53), "search26" },
+	{ OTHER_VECTOR(54), "search27" },
+	{ OTHER_VECTOR(55), "search28" },
+	{ OTHER_VECTOR(56), "search29" },
+	{ OTHER_VECTOR(57), "search30" },
+	{ OTHER_VECTOR(58), "search31" },
+	{ OTHER_VECTOR(59), "search32" },
+	
+	{ OTHER_VECTOR(60), "misc60" },
+	{ OTHER_VECTOR(61), "misc61" },
+	{ OTHER_VECTOR(62), "misc62" },
+	
+	{ OTHER_VECTOR(63), "misc63" },
+	{ OTHER_VECTOR(64), "misc64" },
+	{ OTHER_VECTOR(65), "misc65" },
+	
+};
+
+////////////////////////////////////////////////////////////////////////////
