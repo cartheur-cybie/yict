@@ -21,7 +21,7 @@ A native Linux port is feasible if we split the project into:
 The current code is tightly coupled to MFC/Win32, so this is a refactor + port, not a retarget.
 
 ## Current Blockers
-The current repo cannot be rebuilt as-is from source because referenced shared headers are missing:
+The legacy VC6 project cannot be rebuilt as-is from source because referenced shared headers are missing:
 
 - `../yictdata202.h`
 - `../unames.h`
@@ -103,7 +103,13 @@ Keep these strict interfaces:
 - Legacy code relies on implicit assumptions (pointer casts, packed structures).
 - Action-name maps (`unames*`) are critical for UX labeling and edit safety.
 
-## Immediate Next Actions
-1. Add missing headers (`yictdata202.h`, `unames.h`, `unames2.h`) with source provenance.
-2. Move ROM load/save + YICT validation into `native/yict-core`.
-3. Add first Linux CLI command: `yict-cli inspect <basename>`.
+## Progress Snapshot
+- Done:
+  - native CMake build + CLI
+  - reconstructed `yictdata202.h` with provenance notes
+  - ROM inspect + `.icb` export/import + save path
+  - roundtrip regression test in CTest
+- Remaining:
+  - recover canonical `unames.h` / `unames2.h`
+  - add native UI
+  - package release artifacts + transfer workflow docs

@@ -32,3 +32,8 @@ ctest --test-dir build/native --output-on-failure
 - Export/import `.icb` behavior files
 
 The command currently acts as a smoke-test harness for `yict_core`.
+
+## More Docs
+
+- [`docs/native-status.md`](/home/cartheur/ame/aiventure/aiventure-github/i-cybie/yict/docs/native-status.md)
+- [`docs/testing.md`](/home/cartheur/ame/aiventure/aiventure-github/i-cybie/yict/docs/testing.md)

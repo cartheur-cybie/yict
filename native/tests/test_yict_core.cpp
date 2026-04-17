@@ -1,6 +1,7 @@
 #include "yict_core.hpp"
 
 #include <filesystem>
+#include <fstream>
 #include <iostream>
 #include <string>
 
@@ -16,6 +17,7 @@ int main() {
   const std::string input_base = (root / "release/generic202").string();
   const std::string icb = (tmp / "roundtrip.icb").string();
   const std::string out_base = (tmp / "roundtrip_out").string();
+  const std::string bad_icb = (tmp / "bad.icb").string();
 
   const auto inspect_in = yict::inspect_rom_halves(input_base);
   if (!inspect_in.ok) {
@@ -45,7 +47,29 @@ int main() {
     return 1;
   }
 
+  // Failure path: missing ROM base should fail inspection.
+  const auto missing = yict::inspect_rom_halves((tmp / "missing_base").string());
+  if (missing.ok) {
+    std::cerr << "missing base unexpectedly passed inspection\n";
+    return 1;
+  }
+
+  // Failure path: invalid ICB line should fail import.
+  {
+    std::ofstream out(bad_icb, std::ios::out | std::ios::trunc);
+    out << "YICT_VERSION=202\n";
+    out << "BROKEN_LINE_WITHOUT_EQUALS\n";
+  }
+  std::string bad_error;
+  if (yict::import_icb(input_base, bad_icb, (tmp / "bad_out").string(), &bad_error)) {
+    std::cerr << "bad icb unexpectedly imported\n";
+    return 1;
+  }
+  if (bad_error.find("Malformed ICB line") == std::string::npos) {
+    std::cerr << "unexpected error for bad icb: " << bad_error << "\n";
+    return 1;
+  }
+
   std::cout << "yict_core_tests: ok\n";
   return 0;
 }
-
