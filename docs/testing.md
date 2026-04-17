@@ -28,3 +28,7 @@ Expected:
 - import writes new `-l.bin` / `-h.bin`
 - second inspect succeeds with generation incremented by `1`
 
+## Related
+
+- [Native Status](native-status.md)
+- [Next Steps](next-steps.md)

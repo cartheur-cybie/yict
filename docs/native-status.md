@@ -42,3 +42,6 @@
   - Current implementation uses deterministic ROM-derived storage indexing.
 - Hardware transfer remains external.
 
+## Roadmap
+
+- See [Next Steps](next-steps.md).

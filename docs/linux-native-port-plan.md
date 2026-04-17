@@ -27,7 +27,7 @@ The legacy VC6 project cannot be rebuilt as-is from source because referenced sh
 - `../unames.h`
 - `../unames2.h`
 
-These are required by [`source/cart.h`](/home/cartheur/ame/aiventure/aiventure-github/i-cybie/yict/source/cart.h) and [`source/custom.cpp`](/home/cartheur/ame/aiventure/aiventure-github/i-cybie/yict/source/custom.cpp).
+These are required by [`source/cart.h`](../source/cart.h) and [`source/custom.cpp`](../source/custom.cpp).
 
 ## Recommended Target Stack
 - Language: C++17
@@ -113,3 +113,6 @@ Keep these strict interfaces:
   - recover canonical `unames.h` / `unames2.h`
   - add native UI
   - package release artifacts + transfer workflow docs
+
+See also:
+- [Next Steps](next-steps.md)
